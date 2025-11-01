@@ -1,0 +1,42 @@
+#wrapper
+{
+    padding: 20px;
+}
+
+#header
+{
+    width: 100%;
+    text-align: center;
+    height: 90px;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+#footer{
+    width: 100%;
+    background-color: lightgrey;
+    height: 50px;
+    text-align: center;
+    position: fixed;
+    padding: 20px;
+    bottom: 0;
+}
+
+.heading1
+{
+     font-size: 50px;
+  font-weight: 600;
+  color: #fdfdfe;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+}
+
+h1 
+{
+   font-size: 40px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
