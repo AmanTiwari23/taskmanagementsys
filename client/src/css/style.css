@@ -40,3 +40,40 @@ h1
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+#admindash
+{
+    height: 100px;
+    padding: 20px;
+    text-align: center;
+    background-color: lightgreen;
+
+}
+#adminname
+{
+    padding: 5px;
+    background-color: lightblue;
+    color: navy;
+    font-weight: bold;
+    text-align: right;
+}
+
+#admindata
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+#adminmenu
+{
+    width: 15%;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+#admincontent
+{
+    width: 85%;
+    padding: 20px;
+}
