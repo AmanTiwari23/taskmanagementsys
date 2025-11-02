@@ -28,7 +28,7 @@ const Home = () => {
       }
       else 
       {
-        alert("dffdggf");
+        alert("not admin");
       }
   }
 
