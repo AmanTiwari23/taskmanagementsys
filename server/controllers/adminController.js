@@ -50,4 +50,14 @@ const userCreate = async (req, res) => {
   }
 };
 
-module.exports = { adminLogin, userCreate };
+const empDisplay = async(req,res)=>{
+  const employee = await Employee.find();
+  res.status(200).send(employee);
+}
+
+const taskSave= async(req,res)=>{
+  console.log(req.body);
+  res.send("okk");
+}
+
+module.exports = { adminLogin, userCreate,empDisplay,taskSave };

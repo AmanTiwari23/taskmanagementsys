@@ -7,6 +7,7 @@ const bodyparser = require('body-parser');
 
 const cors = require('cors');
 const AdminRoute = require("./routes/adminRoute");
+const EmpRoute = require("./routes/employeeRoute")
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
