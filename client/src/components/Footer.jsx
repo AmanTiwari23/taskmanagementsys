@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-// Import some social icons
+
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-  // You can put your real links here
+ 
   const socialLinks = [
     {
       href: "https://twitter.com",
@@ -47,9 +47,9 @@ const Footer = () => {
               <a
                 key={link.label}
                 href={link.href}
-                target="_blank" // Open in a new tab
-                rel="noopener noreferrer" // Security best practice
-                aria-label={link.label} // Good for accessibility
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label={link.label} 
                 className="hover:text-indigo-400 transition-colors duration-300"
               >
                 {link.icon}

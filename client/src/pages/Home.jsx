@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import toast from "react-hot-toast"; // 1. Import toast
+import toast from "react-hot-toast";
 import {
   FaUserShield,
   FaEnvelope,
@@ -13,18 +13,20 @@ const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [usertype, setUserType] = useState("");
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous inline errors
+    setError("");
 
-    // 2. Keep inline validation for form-specific errors
-    if (!usertype) {
-      setError("Please select a user type.");
+    
+    if (!email || !password || !usertype) {
+      setError("Please fill out all fields.");
       return;
     }
+   
+
 
     let api;
     if (usertype === "admin") {
@@ -33,18 +35,17 @@ const Home = () => {
       api = `${import.meta.env.VITE_BACKEND_URL}/employee/login`;
     }
 
-    // 3. Show a loading toast while the request is in progress
     const loginPromise = axios.post(api, { email, password });
 
     toast.promise(loginPromise, {
       loading: "Logging in...",
       success: (response) => {
-        // 4. Handle success for both user types
         if (usertype === "admin") {
           localStorage.setItem("adminname", response.data.Admin.name);
           localStorage.setItem("adminemail", response.data.Admin.email);
           navigate("/admin-dashboard");
         } else {
+          localStorage.setItem("empid", response.data.employee._id);
           localStorage.setItem("empname", response.data.employee.name);
           localStorage.setItem("empemail", response.data.employee.email);
           localStorage.setItem(
@@ -53,11 +54,9 @@ const Home = () => {
           );
           navigate("/emp-dashboard");
         }
-        // Return the success message for the toast
         return response.data.msg || "Login successful!";
       },
       error: (err) => {
-        // 5. Handle any errors and return the message for the toast
         console.log(err);
         return err.response?.data?.msg || "Login failed. Please try again.";
       },
@@ -77,7 +76,7 @@ const Home = () => {
           Login
         </h1>
 
-     
+       
         {error && (
           <div
             className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4"
@@ -88,8 +87,7 @@ const Home = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
-         
-           <div>
+          <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Email address
             </label>
@@ -103,13 +101,12 @@ const Home = () => {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+               
               />
             </div>
           </div>
 
-          
-           <div>
+          <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Password
             </label>
@@ -123,12 +120,11 @@ const Home = () => {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+             
               />
             </div>
           </div>
 
-        
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Select User Type
@@ -141,7 +137,7 @@ const Home = () => {
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none transition-all duration-300 appearance-none"
                 value={usertype}
                 onChange={(e) => setUserType(e.target.value)}
-                required
+               
               >
                 <option value="">Select user type</option>
                 <option value="employee">Employee</option>

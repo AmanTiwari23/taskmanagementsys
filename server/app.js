@@ -15,6 +15,7 @@ app.use(cors());
 
 
 app.use("/admin",AdminRoute);
+app.use("/employee",EmpRoute);
 
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log("Db connected succesfully !");
