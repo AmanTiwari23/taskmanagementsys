@@ -37,11 +37,7 @@ const SubmittedReports = () => {
   }, []);
 
  
-  const handleReassign = (taskId, employeeId) => {
-    
-    toast(`Reassigning Task ID: ${taskId}... (Backend call needed)`);
-   
-  };
+ 
 
 
   let sno = 0;
@@ -93,7 +89,7 @@ const SubmittedReports = () => {
           <FaSearch className="text-gray-500 h-5 w-5" />
           <p className="text-sm text-gray-600">
               *Reports are tasks where the employee has submitted a status update.
-              (Backend must return name, status, and days completed.)
+              
           </p>
       </div>
 
